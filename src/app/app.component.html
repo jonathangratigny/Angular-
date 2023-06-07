@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
     <a class="navbar-brand" href="#">La Bonne Affaire</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -14,14 +15,37 @@
   </div>
 </nav>
 
+<div class="container">
+  <div id="alertMsg">
+    <p>{{ message }}</p>
+  </div>
+</div>
+
 <div id="home" class="container">
-<app-article [titreArticle]="'Vélo'" [prixArticle]="prix1" ></app-article>
-<app-article [titreArticle]="'TV'"[prixArticle]="prix2"></app-article>
-<app-article [titreArticle]="'Jouet'" [prixArticle]="prix3" ></app-article>
+
+  <app-article 
+  *ngFor = "let element of liste"
+  [titreArticle]="element.titreArticle" 
+  [prixArticle]="element.prixArticle" 
+  [description]=" element.description" 
+  [urlImage]="element.urlImage "
+  [textAltImage]=" element.textAltImage" 
+  [dispo]="element.dispo" 
+  (info)="onAffiche($event)"></app-article>
+
+  <!-- <app-article [titreArticle]=" 'Vélo' " [prixArticle]="prix1" [description]=" 'Un velo qui roule' " [urlImage]=" '' "
+    [textAltImage]=" 'image velo' " [dispo]="false" (info)="onAffiche($event)"></app-article>
+
+  <app-article [titreArticle]=" 'TV' " [prixArticle]="prix2" [description]=" 'Une TV qui fait son taf' "
+    [urlImage]=" '' " [textAltImage]=" 'image tv' " [dispo]="false" (info)="onAffiche($event)"></app-article>
+
+  <app-article [titreArticle]=" 'Jouet' " [description]=" 'Un jouet pour jouer' " [urlImage]=" '' "
+    [textAltImage]=" 'image jouet ' " [dispo]="false" [prixArticle]="prix3" (info)="onAffiche($event)"></app-article> -->
+
 </div>
 
 <footer class="py-5 bg-dark">
   <div class="container">
     <p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p>
   </div>
-</footer> 
+</footer>
